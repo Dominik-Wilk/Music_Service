@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Stream</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+  <header>
+    <div class="splash">
+      <div class="splash-inner">
+        <h1 class="title-splash">tast<span>e</span></h1>
+        <h3 class="subtitle-splash">engage in art</h3>
+      </div>
+    </div>
+
+  </header>
+  <nav class="navigation">
+    <div class="container">
+      <a href="#home">home</a>
+      <a href="#search">search</a>
+      <a href="#discover">discover</a>
+    </div>
+  </nav>
+
+  <section id="home">
+    <div class="songs">
+      <div class="container">
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+
+        </div>
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+
+        </div>
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+
+        </div>
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="subscribe">
+      <h2 class="subscribe-title">Subscribe <span>now</span></h2>
+      <a href="#join-now" class="joinBtn">
+        <p>Join now</p>
+      </a>
+      <img class="album" src="images/artist.jpg" alt="woman in black hat">
+      <div class="album-info">
+        <h3>new album</h3>
+        <p>Available only for subscribers</p>
+      </div>
+      <div class="album-author">
+        <h3>Dean</h3>
+        <h3 class="moved">Hen<span>son</span></h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="search" class="active">
+    <div class="search-wrapper">
+      <h2 class="subtitle">search</h2>
+      <form>
+        <label for="search-input">Name</label>
+        <input class="typeName" type="text" id="search-input" name="name">
+        <button class="searchBtn" type="submit">Search</button>
+      </form>
+
+      <div class="searchResults">
+
+        <p class="searchMsg">We have found 3 songs...</p>
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+        </div>
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+        </div>
+        <div class="song">
+          <h2 class="title">John Doe - Where did my love go?</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="discover">
+    <div class="discover-wrapper">
+      <h2 class="subtitle">discover</h2>
+      <p class="discoverMsg">Give it a try!</p>
+      <div class="discoverResult">
+        <div class="song">
+          <h2 class="title">David Renda - At The Top</h2>
+          <div class="player">
+            <audio crossorigin>
+              <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="info">
+            <p class="categories">Categories: Melancholy, Calm</p>
+            <p class="rank">#5 in the ranking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>All rights reserved</p>
+  </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      GreenAudioPlayer.init({
+        selector: '.player',
+        stopOthersOnPlay: true
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+
+</body>
+
+</html>
