@@ -1,5 +1,8 @@
-@import 'partials/settings';
-@import 'partials/homepage';
-@import 'partials/discover';
-@import 'partials/search';
-@import 'partials/alwaysOn';
+@import 'variables';
+@import 'normalize';
+@import 'layout';
+@import 'global';
+@import 'pages/homepage';
+@import 'pages/discover';
+@import 'pages/search';
+@import 'alwaysOn';
