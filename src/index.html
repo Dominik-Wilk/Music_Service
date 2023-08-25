@@ -62,50 +62,15 @@
         <h2 class="subtitle">search</h2>
         <form>
           <label for="search-input">Name</label>
-          <input class="typeName" type="text" id="search-input" name="name">
-          <button class="searchBtn" type="submit">Search</button>
+          <input id="search-input" class="typeName" type="text" name="name">
+          <button id="searchBtn" class="searchBtn" type="submit">Search</button>
         </form>
 
+        <p class="searchMsg" id="searchMsg"></p>
         <div class="searchResults" id="searchResults">
 
-          <p class="searchMsg" id="searchMsg">We have found 3 songs...</p>
 
-          <div class="song">
-            <h2 class="name">David Renda - At The Top</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Powerful, Mystery</p>
-              <p class="rank">#1 in the ranking</p>
-            </div>
-          </div>
-          <div class="song">
-            <h2 class="name">David Renda - Silly Feet</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/Silly_Feet_David_Renda.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Relax, Fun</p>
-              <p class="rank">#2 in the ranking</p>
-            </div>
-          </div>
-          <div class="song">
-            <h2 class="name">David Fesliyan - Western adventures</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/Western_Adventures_-_David_Fesliyan.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Fun, Western</p>
-              <p class="rank">#4 in the ranking</p>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -154,11 +119,25 @@
       </div>
     </script>
 
+  <script id="template-song-search" type="text/x-handlebars-template">
+    <div class="song">
+        <h2 class="name" id="name">{{name filename}} - {{ title }}</h2>
+        <div class="player2">
+          <audio crossorigin>
+            <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="info">
+          <p class="categories" id="categories">Categories: {{toString categories}}</p>
+          <p class="rank" id="rank">#{{ ranking }} in the ranking</p>
+        </div>
+      </div>
+    </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
 
-  <script src="./js/components/handlebarsHelpers.js"></script>
   <script src="./js/app.js" type="module"></script>
 
 </body>
