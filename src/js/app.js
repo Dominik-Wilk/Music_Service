@@ -2,6 +2,7 @@ import { select, classNames, settings } from './settings.js';
 import Song from './components/Song.js';
 import GreenAudioPlayer from '../vendor/green-audio-player.js';
 import Discover from './components/Discover.js';
+import Search from './components/Search.js';
 
 const app = {
   initPages: function () {
@@ -71,11 +72,15 @@ const app = {
   initDiscover: function () {
     new Discover(this.data);
   },
+  initSearch: function () {
+    new Search(this.data);
+  },
 
   init: function () {
     this.initPages();
     this.initData();
     this.initDiscover();
+    this.initSearch();
   },
 };
 app.init();

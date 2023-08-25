@@ -16,7 +16,9 @@ class Discover {
         if (song === this.data.songs[arrEl]) {
           const resultsContainer = document.querySelector(select.containerOf.discoverResult);
           const generatedHTML = templates.song(song);
+          console.log(generatedHTML);
           this.element = utils.createDOMFromHTML(generatedHTML);
+
           if (resultsContainer.innerHTML === '') {
             resultsContainer.appendChild(this.element);
           } else {
