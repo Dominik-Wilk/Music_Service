@@ -26,9 +26,9 @@
   </header>
   <nav class="navigation">
     <div class="container">
-      <a href="#home">home</a>
-      <a href="#search">search</a>
-      <a href="#discover">discover</a>
+      <a id="homeLink" href="#home">home</a>
+      <a id="searchLink" href="#search">search</a>
+      <a id="discoverLink" href="#discover">discover</a>
     </div>
   </nav>
 
@@ -36,57 +36,9 @@
 
     <section id="home">
       <div class="container home-wrapper">
-        <div class="songs" id="songs">
-          <div class="song">
-            <h2 class="name" id="name">David Renda - At The Top</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source id="src" src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories" id="categories">Categories: Powerful, Mystery</p>
-              <p class="rank" id="rank">#1 in the ranking</p>
-            </div>
-          </div>
-          <div class="song">
-            <h2 class="name">David Renda - Silly Feet</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/Silly_Feet_David_Renda.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Relax, Fun</p>
-              <p class="rank">#2 in the ranking</p>
-            </div>
-          </div>
-          <div class="song">
-            <h2 class="name">David Fesliyan - Western adventures</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/Western_Adventures_-_David_Fesliyan.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Fun, Western</p>
-              <p class="rank">#4 in the ranking</p>
-            </div>
-          </div>
-          <div class="song">
-            <h2 class="name">Steve Oxen - Bass trap</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/BASS_TRAP_Steve_Oxen.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Powerful, Insomnia</p>
-              <p class="rank">#3 in the ranking</p>
-            </div>
-          </div>
-        </div>
+        <div class="songs" id="songs"></div>
       </div>
+
       <div class="subscribe">
         <h2 class="subscribe-title">Subscribe <span>now</span></h2>
         <a href="#join-now" class="joinBtn">
@@ -162,22 +114,7 @@
       <div class="discover-wrapper">
         <h2 class="subtitle">discover</h2>
         <p class="discoverMsg">Give it a try!</p>
-        <div class="discoverResult">
-
-          <div class="song">
-            <h2 class="name">David Renda - At The Top</h2>
-            <div class="player">
-              <audio crossorigin>
-                <source src="./songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-            <div class="info">
-              <p class="categories">Categories: Melancholy, Calm</p>
-              <p class="rank">#5 in the ranking</p>
-            </div>
-          </div>
-
-        </div>
+        <div class="discoverResult" id="discoverResult"></div>
       </div>
     </section>
   </div>
@@ -187,18 +124,41 @@
     <p>All rights reserved</p>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      GreenAudioPlayer.init({
-        selector: '.player',
-        stopOthersOnPlay: true
-      });
-    });
+  <script id="template-song" type="text/x-handlebars-template">
+  <div class="song">
+      <h2 class="name" id="name">{{name filename}} - {{ title }}</h2>
+      <div class="player">
+        <audio crossorigin>
+          <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="info">
+        <p class="categories" id="categories">Categories: {{toString categories}}</p>
+        <p class="rank" id="rank">#{{ ranking }} in the ranking</p>
+      </div>
+    </div>
   </script>
+
+  <script id="template-song-lottery" type="text/x-handlebars-template">
+    <div class="song">
+        <h2 class="name" id="name">{{name filename}} - {{ title }}</h2>
+        <div class="player1">
+          <audio crossorigin>
+            <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="info">
+          <p class="categories" id="categories">Categories: {{toString categories}}</p>
+          <p class="rank" id="rank">#{{ ranking }} in the ranking</p>
+        </div>
+      </div>
+    </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+
+  <script src="./js/components/handlebarsHelpers.js"></script>
   <script src="./js/app.js" type="module"></script>
 
 </body>
