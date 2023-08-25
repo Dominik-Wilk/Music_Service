@@ -1,6 +1,7 @@
 export const select = {
   templateOf: {
-    homePage: '#template-home-page',
+    songHome: '#template-song',
+    songLottery: '#template-song-lottery',
   },
   containerOf: {
     songs: '#songs',
@@ -12,12 +13,6 @@ export const select = {
   nav: {
     links: '.navigation a',
   },
-  song: {
-    name: '#name',
-    source: '#src',
-    categories: '#categories',
-    rank: '#rank',
-  },
 };
 export const classNames = {
   nav: {
@@ -25,5 +20,16 @@ export const classNames = {
   },
   pages: {
     active: 'active',
+  },
+};
+export const templates = {
+  songHome: Handlebars.compile(document.querySelector(select.templateOf.songHome).innerHTML),
+  song: Handlebars.compile(document.querySelector(select.templateOf.songLottery).innerHTML),
+};
+
+export const settings = {
+  db: {
+    url: '//' + window.location.hostname + (window.location.hostname == 'localhost' ? ':3131' : ''),
+    songs: 'songs',
   },
 };
