@@ -44,6 +44,7 @@ class Search {
         selector: '.song__player1',
         stopOthersOnPlay: true,
       });
+      this.dom.inputSearch.value = '';
     });
   }
 }
