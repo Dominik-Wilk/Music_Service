@@ -12,15 +12,19 @@
 
   &__title {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 80px;
+    width: 100%;
+    transform: translateY(-50%);
+    font-size: 100px;
     font-weight: 600;
     text-transform: uppercase;
+    text-align: center;
     line-height: 27px;
     letter-spacing: 20px;
     span {
       font-weight: 900;
+      font-style: normal;
+      letter-spacing: 20px;
+      line-height: normal;
     }
   }
   &__joinBtn {
@@ -30,7 +34,7 @@
     background-color: $second-color;
     box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.11);
     top: 522px;
-    left: 19.8%;
+    right: 63.9%;
     text-decoration: none;
     border-radius: 4px;
 
@@ -55,7 +59,6 @@
   &__info {
     position: absolute;
     bottom: 137px;
-    // left: 872px;
     left: 45.82%;
     width: 735px;
 
