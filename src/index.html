@@ -17,9 +17,9 @@
 <body>
   <header>
     <div class="splash">
-      <div class="splash-inner">
-        <h1 class="title-splash">tast<span>e</span></h1>
-        <h3 class="subtitle-splash">engage in art</h3>
+      <div class="splash__inner">
+        <h1 class="splash__title">tast<span>e</span></h1>
+        <h3 class="splash__subtitle">engage in art</h3>
       </div>
     </div>
 
@@ -34,52 +34,48 @@
 
   <div id="pages">
 
-    <section id="home">
-      <div class="container home-wrapper">
-        <div class="songs" id="songs"></div>
+    <section id="home" class="home">
+      <div class="container home__wrapper">
+        <div class="home__songs" id="songs"></div>
       </div>
 
       <div class="subscribe">
-        <h2 class="subscribe-title">Subscribe <span>now</span></h2>
-        <a href="#join-now" class="joinBtn">
+        <h2 class="subscribe__title">Subscribe <span>now</span></h2>
+        <a href="#join-now" class="subscribe__joinBtn">
           <p>Join now</p>
         </a>
-        <img class="album" src="images/artist.jpg" alt="woman in black hat">
-        <div class="album-info">
+        <img class="subscribe__album" src="images/artist.jpg" alt="woman in black hat">
+        <div class="subscribe__info">
           <h3>new album</h3>
           <p>Available only for subscribers</p>
         </div>
 
-        <div class="album-author">
+        <div class="subscribe__author">
           <h3>Dean</h3>
-          <h3 class="moved">Hen<span>son</span></h3>
+          <h3 class="subscribe__author--moved">Hen<span>son</span></h3>
         </div>
       </div>
     </section>
 
-    <section id="search">
-      <div class="search-wrapper">
-        <h2 class="subtitle">search</h2>
+    <section id="search" class="search">
+      <div class="search__wrapper">
+        <h2 class="search__title">search</h2>
         <form>
           <label for="search-input">Name</label>
-          <input id="search-input" class="typeName" type="text" name="name">
-          <button id="searchBtn" class="searchBtn" type="submit">Search</button>
+          <input id="search-input" class="search__input" type="text" name="name">
+          <button id="searchBtn" class="search__btn" type="submit">Search</button>
         </form>
 
-        <p class="searchMsg" id="searchMsg"></p>
-        <div class="searchResults" id="searchResults">
-
-
-
-        </div>
+        <p class="search__message" id="searchMsg"></p>
+        <div class="search__results" id="searchResults"></div>
       </div>
     </section>
 
-    <section id="discover">
-      <div class="discover-wrapper">
-        <h2 class="subtitle">discover</h2>
-        <p class="discoverMsg">Give it a try!</p>
-        <div class="discoverResult" id="discoverResult"></div>
+    <section id="discover" class="discover">
+      <div class="discover__wrapper">
+        <h2 class="discover__title">discover</h2>
+        <p class="discover__message">Give it a try!</p>
+        <div class="discover-result" id="discoverResult"></div>
       </div>
     </section>
   </div>
@@ -91,45 +87,45 @@
 
   <script id="template-song" type="text/x-handlebars-template">
   <div class="song">
-      <h2 class="name" id="name">{{name filename}} - {{ title }}</h2>
-      <div class="player">
+      <h2 class="song__name" id="name">{{name filename}} - {{ title }}</h2>
+      <div class="song__player">
         <audio crossorigin>
           <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
         </audio>
       </div>
-      <div class="info">
-        <p class="categories" id="categories">Categories: {{toString categories}}</p>
-        <p class="rank" id="rank">#{{ ranking }} in the ranking</p>
+      <div class="song__info">
+        <p class="song__categories" id="categories">Categories: {{toString categories}}</p>
+        <p class="song__rank" id="rank">#{{ ranking }} in the ranking</p>
       </div>
     </div>
   </script>
 
-  <script id="template-song-lottery" type="text/x-handlebars-template">
+  <script id="template-song-search" type="text/x-handlebars-template">
     <div class="song">
-        <h2 class="name" id="name">{{name filename}} - {{ title }}</h2>
-        <div class="player1">
+        <h2 class="song__name" id="name">{{name filename}} - {{ title }}</h2>
+        <div class="song__player1">
           <audio crossorigin>
             <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
           </audio>
         </div>
-        <div class="info">
-          <p class="categories" id="categories">Categories: {{toString categories}}</p>
-          <p class="rank" id="rank">#{{ ranking }} in the ranking</p>
+        <div class="song__info">
+          <p class="song__categories" id="categories">Categories: {{toString categories}}</p>
+          <p class="song__rank" id="rank">#{{ ranking }} in the ranking</p>
         </div>
       </div>
     </script>
 
-  <script id="template-song-search" type="text/x-handlebars-template">
+  <script id="template-song-lottery" type="text/x-handlebars-template">
     <div class="song">
-        <h2 class="name" id="name">{{name filename}} - {{ title }}</h2>
-        <div class="player2">
+        <h2 class="song__name" id="name">{{name filename}} - {{ title }}</h2>
+        <div class="song__player2">
           <audio crossorigin>
             <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
           </audio>
         </div>
-        <div class="info">
-          <p class="categories" id="categories">Categories: {{toString categories}}</p>
-          <p class="rank" id="rank">#{{ ranking }} in the ranking</p>
+        <div class="song__info">
+          <p class="song__categories" id="categories">Categories: {{toString categories}}</p>
+          <p class="song__rank" id="rank">#{{ ranking }} in the ranking</p>
         </div>
       </div>
     </script>

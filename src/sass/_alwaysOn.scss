@@ -7,7 +7,7 @@
   background-position: center;
   background-size: cover;
 
-  .splash-inner {
+  .splash__inner {
     margin: 0 482px 0 418px;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
     height: 100%;
     top: 58px;
 
-    .title-splash {
+    .splash__title {
       position: absolute;
       margin: 494px 484px 667px 516px;
       text-shadow: 0 0 118px rgba(0, 0, 0, 0.39);
@@ -32,7 +32,7 @@
       }
     }
 
-    .subtitle-splash {
+    .splash__subtitle {
       position: absolute;
       width: 181px;
       height: 169px;

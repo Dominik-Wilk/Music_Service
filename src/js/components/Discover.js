@@ -28,7 +28,7 @@ class Discover {
         }
       }
       GreenAudioPlayer.init({
-        selector: '.player1',
+        selector: '.song__player2',
         stopOthersOnPlay: true,
       });
     });

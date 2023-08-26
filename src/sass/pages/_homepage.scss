@@ -1,4 +1,4 @@
-.songs {
+.home__songs {
   margin-top: 113px;
 }
 
@@ -10,7 +10,7 @@
   height: 1023px;
   margin-top: 100px;
 
-  &-title {
+  &__title {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -23,7 +23,7 @@
       font-weight: 900;
     }
   }
-  .joinBtn {
+  &__joinBtn {
     position: absolute;
     width: 313px;
     height: 133px;
@@ -44,7 +44,7 @@
       color: $main-color;
     }
   }
-  .album {
+  &__album {
     position: absolute;
     width: 465px;
     height: 578px;
@@ -52,7 +52,7 @@
     top: 169px;
     left: 58.5%;
   }
-  .album-info {
+  &__info {
     position: absolute;
     bottom: 137px;
     // left: 872px;
@@ -74,7 +74,7 @@
       letter-spacing: 8px;
     }
   }
-  .album-author {
+  &__author {
     position: absolute;
     width: 506px;
     left: 816px;
@@ -89,7 +89,7 @@
       letter-spacing: 20px;
       line-height: 1;
     }
-    .moved {
+    .subscribe__author--moved {
       margin-left: 75px;
       span {
         color: $second-color;

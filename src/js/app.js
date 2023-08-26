@@ -54,7 +54,7 @@ const app = {
 
   initPlayer() {
     GreenAudioPlayer.init({
-      selector: '.player',
+      selector: '.song__player',
       stopOthersOnPlay: true,
     });
   },

@@ -41,7 +41,7 @@ class Search {
       this.dom.searchMsg.innerHTML = `We have found ${this.songsArr.length} songs...`;
 
       GreenAudioPlayer.init({
-        selector: '.player2',
+        selector: '.song__player1',
         stopOthersOnPlay: true,
       });
     });

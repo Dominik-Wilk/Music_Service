@@ -4,7 +4,7 @@
   text-align: center;
   margin-bottom: 76px;
 
-  .name {
+  &__name {
     margin: 0;
     font-size: 30px;
     letter-spacing: 2.25px;
@@ -12,15 +12,15 @@
     margin-left: 31px;
   }
 
-  .player,
-  .player1,
-  .player2 {
+  &__player,
+  &__player1,
+  &__player2 {
     width: 582px;
     margin-top: 54px;
     margin-bottom: 26px;
   }
 
-  .info {
+  &__info {
     display: flex;
     justify-content: space-between;
     margin-left: 25px;
