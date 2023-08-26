@@ -48,51 +48,55 @@
       color: $main-color;
     }
   }
+
   &__album {
     position: absolute;
-    width: 465px;
-    height: 578px;
-    box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.39);
+    right: 17.75%;
     top: 169px;
-    left: 58.5%;
-  }
-  &__info {
-    position: absolute;
-    bottom: 137px;
-    left: 45.82%;
-    width: 735px;
-
-    h3 {
-      margin: 0;
-      font-size: 40px;
+    width: 763px;
+    height: 717px;
+    &-img {
+      position: absolute;
+      width: 465px;
+      height: 578px;
+      box-shadow: 0 0 118px 24px rgba(0, 0, 0, 0.39);
+      right: 0;
+    }
+    &-info {
+      position: absolute;
+      width: 735px;
+      bottom: 0;
+      right: -28px;
       text-align: right;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: $gray-color;
-      letter-spacing: 8px;
+
+      h3 {
+        font-size: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $gray-color;
+        letter-spacing: 8px;
+      }
+      p {
+        font-weight: 600;
+        font-size: 39px;
+        letter-spacing: 8px;
+      }
     }
-    p {
-      font-weight: 600;
-      font-size: 39px;
-      letter-spacing: 8px;
+
+    &-author {
+      position: absolute;
+      width: 506px;
+
+      top: 294px;
+      h3 {
+        font-size: 100px;
+        font-weight: 700;
+        font-style: normal;
+        letter-spacing: 20px;
+        line-height: 1;
+      }
     }
-  }
-  &__author {
-    position: absolute;
-    width: 506px;
-    left: 816px;
-    right: 598px;
-    top: 463px;
-    bottom: 385px;
-    h3 {
-      font-size: 100px;
-      font-weight: 700;
-      font-style: normal;
-      text-align: left;
-      letter-spacing: 20px;
-      line-height: 1;
-    }
-    .subscribe__author--moved {
+    .subscribe__album-author--moved {
       margin-left: 75px;
       span {
         color: $second-color;
