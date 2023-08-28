@@ -9,7 +9,7 @@ class Song {
   }
 
   renderInSongs() {
-    const generatedHTML = templates.songHome(this.data);
+    const generatedHTML = templates.song(this.data);
     this.element = utils.createDOMFromHTML(generatedHTML);
 
     const songContainer = document.querySelector(select.containerOf.songs);

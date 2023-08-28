@@ -101,36 +101,6 @@
     </div>
   </script>
 
-  <script id="template-song-search" type="text/x-handlebars-template">
-    <div class="song">
-        <h2 class="song__name" id="name">{{name filename}} - {{ title }}</h2>
-        <div class="song__player1">
-          <audio crossorigin>
-            <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
-          </audio>
-        </div>
-        <div class="song__info">
-          <p class="song__categories" id="categories">Categories: {{toString categories}}</p>
-          <p class="song__rank" id="rank">#{{ ranking }} in the ranking</p>
-        </div>
-      </div>
-    </script>
-
-  <script id="template-song-lottery" type="text/x-handlebars-template">
-    <div class="song">
-        <h2 class="song__name" id="name">{{name filename}} - {{ title }}</h2>
-        <div class="song__player2">
-          <audio crossorigin>
-            <source id="src" src="./songs/{{ filename}}" type="audio/mpeg">
-          </audio>
-        </div>
-        <div class="song__info">
-          <p class="song__categories" id="categories">Categories: {{toString categories}}</p>
-          <p class="song__rank" id="rank">#{{ ranking }} in the ranking</p>
-        </div>
-      </div>
-    </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>

@@ -1,7 +1,6 @@
 import { templates, select } from '../settings.js';
 import utils from '../utils.js';
-import GreenAudioPlayer from '../../vendor/green-audio-player.js';
-
+import app from '../app.js';
 class Search {
   constructor(data) {
     this.data = data;
@@ -24,7 +23,8 @@ class Search {
       this.songsArr = [];
       this.dom.resultsContainer.innerHTML = '';
       for (let songData of this.data.songs) {
-        const generatedHTML = templates.songSearch(songData);
+        const generatedHTML = templates.song(songData);
+
         this.element = utils.createDOMFromHTML(generatedHTML);
 
         if (
@@ -40,10 +40,7 @@ class Search {
       }
       this.dom.searchMsg.innerHTML = `We have found ${this.songsArr.length} songs...`;
 
-      GreenAudioPlayer.init({
-        selector: '.song__player1',
-        stopOthersOnPlay: true,
-      });
+      app.initPlayer(select.containerOf.searchResult);
       this.dom.inputSearch.value = '';
     });
   }

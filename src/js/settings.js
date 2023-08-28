@@ -1,8 +1,6 @@
 export const select = {
   templateOf: {
-    songHome: '#template-song',
-    songLottery: '#template-song-lottery',
-    songSearch: '#template-song-search',
+    song: '#template-song',
   },
   containerOf: {
     songs: '#songs',
@@ -24,9 +22,7 @@ export const classNames = {
   },
 };
 export const templates = {
-  songHome: Handlebars.compile(document.querySelector(select.templateOf.songHome).innerHTML),
-  song: Handlebars.compile(document.querySelector(select.templateOf.songLottery).innerHTML),
-  songSearch: Handlebars.compile(document.querySelector(select.templateOf.songSearch).innerHTML),
+  song: Handlebars.compile(document.querySelector(select.templateOf.song).innerHTML),
 };
 
 export const settings = {

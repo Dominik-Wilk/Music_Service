@@ -1,7 +1,6 @@
 import utils from '../utils.js';
 import { select, templates } from '../settings.js';
-import GreenAudioPlayer from '../../vendor/green-audio-player.js';
-
+import app from '../app.js';
 class Discover {
   constructor(data) {
     this.data = data;
@@ -16,7 +15,6 @@ class Discover {
         if (song === this.data.songs[arrEl]) {
           const resultsContainer = document.querySelector(select.containerOf.discoverResult);
           const generatedHTML = templates.song(song);
-          console.log(generatedHTML);
           this.element = utils.createDOMFromHTML(generatedHTML);
 
           if (resultsContainer.innerHTML === '') {
@@ -27,10 +25,7 @@ class Discover {
           }
         }
       }
-      GreenAudioPlayer.init({
-        selector: '.song__player2',
-        stopOthersOnPlay: true,
-      });
+      app.initPlayer(select.containerOf.discoverResult);
     });
   }
 }

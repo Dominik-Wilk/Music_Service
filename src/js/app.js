@@ -49,12 +49,12 @@ const app = {
     for (let songData in this.data.songs) {
       new Song(this.data.songs[songData].id, this.data.songs[songData]);
     }
-    this.initPlayer();
+    this.initPlayer(select.containerOf.songs);
   },
 
-  initPlayer() {
+  initPlayer: function (select) {
     GreenAudioPlayer.init({
-      selector: '.song__player',
+      selector: `${select} .song__player`,
       stopOthersOnPlay: true,
     });
   },
@@ -84,3 +84,5 @@ const app = {
   },
 };
 app.init();
+
+export default app;
