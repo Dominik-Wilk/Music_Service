@@ -1,8 +1,8 @@
 @media only screen and (max-width: 480px) {
   .splash {
-    max-width: 100vw;
+    max-width: 100%;
     height: 100vh;
-    background-position: -420px 0;
+    background-position: -465px 0;
     object-fit: cover;
     &__inner {
       margin: 0;
@@ -81,7 +81,7 @@
     &__album {
       right: 0;
       top: 50px;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
       &-img {
         right: 10%;
@@ -90,10 +90,12 @@
         object-fit: cover;
       }
       &-info {
-        width: 100vw;
+        width: 100%;
         right: 0;
         bottom: 250px;
         text-align: center;
+        text-shadow: 1px 1px 10px black;
+        margin-bottom: 40px;
 
         h3 {
           font-size: 40px;
@@ -106,15 +108,15 @@
           font-weight: 600;
           font-size: 39px;
           letter-spacing: 2px;
-          text-shadow: 1px 1px 2px black;
         }
       }
 
       &-author {
         width: 100%;
-        top: 0px;
-        left: 10px;
+        top: 0;
+        left: 0;
         h3 {
+          text-shadow: 1px 1px 10px black;
           text-align: center;
           font-size: 100px;
           font-weight: 700;
@@ -126,11 +128,156 @@
       .subscribe__album-author--moved {
         position: absolute;
         font-size: 80px;
-        left: 40px;
-        margin-top: 160px;
+        left: 55px;
+        margin-top: 180px;
         margin-left: 0;
         letter-spacing: 10px;
         color: $second-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .splash {
+    background-position: -260px 0;
+
+    .splash__title {
+      margin-top: -100px;
+      font-size: 80px;
+      letter-spacing: 20px;
+    }
+    .splash__subtitle {
+      margin-top: 200px;
+      font-size: 20px;
+      word-spacing: 65px;
+    }
+  }
+
+  .navigation {
+    .container {
+      a {
+        font-size: 18px;
+        padding: 10px 15px;
+      }
+    }
+  }
+
+  //================// PLAYER //================//
+
+  .green-audio-player {
+    min-width: 250px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  //================// GLOBAL //================//
+  .home__songs {
+    margin-top: 60px;
+    .song:last-of-type {
+      margin-bottom: 76px;
+    }
+    .song {
+      margin-bottom: 50px;
+
+      &__name {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      &__player,
+      &__player1,
+      &__player2 {
+        width: 90vw;
+        margin-top: 30px;
+      }
+
+      &__info {
+        font-size: 14px;
+
+        .song__categories {
+          text-align: left;
+          margin-right: 10px;
+        }
+
+        .song__rank {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .subscribe {
+    background-position: -600px -150px;
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__album {
+      top: 200px;
+      width: 100%;
+      height: 65vh;
+      &-img {
+        right: 10%;
+        width: 80%;
+        height: 70%;
+        object-fit: cover;
+      }
+      &-info {
+        width: 80%;
+        margin-right: 10%;
+        bottom: 410px;
+        margin-bottom: 0;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: $main-color;
+          letter-spacing: 2px;
+        }
+        p {
+          font-weight: 600;
+          font-size: 20px;
+          letter-spacing: 2px;
+        }
+      }
+
+      &-author {
+        width: 100%;
+        top: 0px;
+        left: 0;
+        h3 {
+          margin-top: 10px;
+          font-size: 48px;
+          letter-spacing: 20px;
+          line-height: 1;
+        }
+      }
+      .subscribe__album-author--moved {
+        text-shadow: 1px 1px 10px black;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-top: 153px;
+        font-size: 42px;
+        left: 0;
+        width: 100%;
+      }
+    }
+    &__joinBtn {
+      position: absolute;
+      width: 50%;
+      height: 70px;
+      top: 470px;
+      right: 25%;
+
+      p {
+        font-size: 26px;
+        margin: 22px 0;
+        letter-spacing: 3px;
       }
     }
   }
