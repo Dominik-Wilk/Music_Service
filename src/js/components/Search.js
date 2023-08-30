@@ -5,6 +5,9 @@ class Search {
   constructor(data) {
     this.data = data;
     this.dom = {};
+
+    this.songsArr = [];
+
     this.getElement();
     this.initSearch();
   }
@@ -20,7 +23,7 @@ class Search {
   initSearch() {
     this.dom.searchBtn.addEventListener('click', event => {
       event.preventDefault();
-      this.songsArr = [];
+
       this.dom.resultsContainer.innerHTML = '';
       for (let songData of this.data.songs) {
         const generatedHTML = templates.song(songData);
@@ -44,6 +47,12 @@ class Search {
       this.dom.inputSearch.value = '';
     });
   }
+  // resetSearch() {
+  //   document.querySelector('.navigation').addEventListener('click', function (event) {
+  //     if (event.target.getAttribute('href') && document.querySelector('#searchLink').classList.contains('clicked')) {
+  //     }
+  //   });
+  // }
 }
 
 export default Search;

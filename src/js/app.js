@@ -5,6 +5,33 @@ import Discover from './components/Discover.js';
 import Search from './components/Search.js';
 
 const app = {
+  init: function () {
+    this.initPages();
+    this.initData();
+    this.initDiscover();
+    this.initSearch();
+
+    this.getElement();
+  },
+
+  getElement: function () {
+    this.wrapper = document.querySelectorAll('.wrapper');
+  },
+
+  resetWrapper: function () {
+    document.querySelector('.navigation').addEventListener('click', e => {
+      if (e.target.getAttribute('href')) {
+        for (let item of this.wrapper) {
+          item.innerHTML = '';
+        }
+        document.querySelector('#searchMsg').innerHTML = '';
+        if (e.target.getAttribute('href') === '#home') {
+          this.initMenu();
+        }
+      }
+    });
+  },
+
   initPages: function () {
     this.pages = document.querySelector(select.containerOf.pages).children;
     this.navLinks = document.querySelectorAll(select.nav.links);
@@ -30,6 +57,7 @@ const app = {
         window.location.hash = `#/${id}`;
       });
     }
+    this.resetWrapper();
   },
   initData: function () {
     this.data = {};
@@ -49,6 +77,7 @@ const app = {
     for (let songData in this.data.songs) {
       new Song(this.data.songs[songData].id, this.data.songs[songData]);
     }
+
     this.initPlayer(select.containerOf.songs);
   },
 
@@ -74,13 +103,6 @@ const app = {
   },
   initSearch: function () {
     new Search(this.data);
-  },
-
-  init: function () {
-    this.initPages();
-    this.initData();
-    this.initDiscover();
-    this.initSearch();
   },
 };
 app.init();
