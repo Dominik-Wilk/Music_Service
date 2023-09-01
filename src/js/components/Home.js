@@ -1,7 +1,7 @@
 import { templates, select } from '../settings.js';
 import utils from '../utils.js';
 
-class Song {
+class Home {
   constructor(id, data) {
     this.id = id;
     this.data = data;
@@ -17,4 +17,4 @@ class Song {
     songContainer.appendChild(this.element);
   }
 }
-export default Song;
+export default Home;

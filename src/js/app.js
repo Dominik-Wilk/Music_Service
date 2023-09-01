@@ -1,5 +1,5 @@
 import { select, classNames, settings } from './settings.js';
-import Song from './components/Song.js';
+import Home from './components/Home.js';
 import GreenAudioPlayer from '../vendor/green-audio-player.js';
 import Discover from './components/Discover.js';
 import Search from './components/Search.js';
@@ -8,10 +8,9 @@ const app = {
   init: function () {
     this.initPages();
     this.initData();
+    this.getElement();
     this.initDiscover();
     this.initSearch();
-
-    this.getElement();
   },
 
   getElement: function () {
@@ -25,8 +24,11 @@ const app = {
           item.innerHTML = '';
         }
         document.querySelector('#searchMsg').innerHTML = '';
+        // if (e.target.getAttribute('href') === '#discover') {
+        //   Discover.initDiscover();
+        // }
         if (e.target.getAttribute('href') === '#home') {
-          this.initMenu();
+          this.initHome();
         }
       }
     });
@@ -34,7 +36,7 @@ const app = {
 
   initPages: function () {
     this.pages = document.querySelector(select.containerOf.pages).children;
-    this.navLinks = document.querySelectorAll(select.nav.links);
+    this.links = document.querySelectorAll(select.links.links);
     const idFromHash = window.location.hash.replace('#', '');
     let pageMatchingHash = this.pages[0].id;
     for (let page of this.pages) {
@@ -45,7 +47,7 @@ const app = {
     }
     this.activatePage(pageMatchingHash);
 
-    for (let link of this.navLinks) {
+    for (let link of this.links) {
       link.addEventListener('click', e => {
         const clickedElement = e.currentTarget;
 
@@ -69,13 +71,13 @@ const app = {
       })
       .then(parsedResponse => {
         this.data.songs = parsedResponse;
-        this.initMenu();
+        this.initHome();
       });
   },
 
-  initMenu: function () {
+  initHome: function () {
     for (let songData in this.data.songs) {
-      new Song(this.data.songs[songData].id, this.data.songs[songData]);
+      new Home(this.data.songs[songData].id, this.data.songs[songData]);
     }
 
     this.initPlayer(select.containerOf.songs);
@@ -93,7 +95,7 @@ const app = {
       page.classList.toggle(classNames.pages.active, page.id === pageId);
     }
 
-    for (let link of this.navLinks) {
+    for (let link of this.links) {
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') === `#${pageId}`);
     }
   },

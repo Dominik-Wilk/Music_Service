@@ -8,8 +8,9 @@ utils.createDOMFromHTML = function (htmlString) {
   return div.firstChild;
 };
 
-utils.toUpperCase = function (context) {
+utils.upperCase = function (context) {
   context.toUpperCase();
+  return context;
 };
 
 Handlebars.registerHelper('name', function (context) {
