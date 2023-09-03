@@ -9,6 +9,11 @@ export const select = {
     home: '.home-wrapper',
     pages: '#pages',
   },
+  searchForm: {
+    button: '.search__btn',
+    input: '.search__input',
+    message: '.search__message',
+  },
   links: {
     links: ' a',
   },
