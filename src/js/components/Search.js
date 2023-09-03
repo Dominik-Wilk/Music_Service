@@ -3,56 +3,58 @@ import utils from '../utils.js';
 import app from '../app.js';
 class Search {
   constructor(data) {
+    this.searchForm = document.querySelector('#search');
+
     this.data = data;
     this.dom = {};
 
-    this.songsArr = [];
-
-    this.getElement();
-    this.initSearch();
+    this.getElement(this.searchForm);
+    this.initAction();
   }
 
-  getElement() {
-    this.dom.searchBtn = document.querySelector('#searchBtn');
-    this.dom.inputSearch = document.querySelector('#search-input');
-    this.dom.searchMsg = document.querySelector('#searchMsg');
+  getElement(searchForm) {
+    this.dom.searchBtn = searchForm.querySelector(select.searchForm.button);
+    this.dom.searchInput = searchForm.querySelector(select.searchForm.input);
+    this.dom.searchMsg = searchForm.querySelector(select.searchForm.message);
 
-    this.dom.resultsContainer = document.querySelector(select.containerOf.searchResult);
+    this.dom.resultsContainer = searchForm.querySelector(select.containerOf.searchResult);
   }
 
   initSearch() {
+    const searchValue = this.dom.searchInput.value.trim().toLowerCase();
+
+    const filteredSongs = this.data.songs.filter(song => song.title.toLowerCase().includes(searchValue));
+
+    const filteredAuthors = this.data.authors.filter(author => author.name.toLowerCase().includes(searchValue));
+
+    const songsByAuthor = this.data.songs.filter(song => filteredAuthors.some(author => song.author === author.id));
+
+    this.songsSet = [...new Set([...filteredSongs, ...songsByAuthor])];
+  }
+
+  initAction() {
     this.dom.searchBtn.addEventListener('click', event => {
       event.preventDefault();
 
-      this.dom.resultsContainer.innerHTML = '';
-      for (let songData of this.data.songs) {
-        const generatedHTML = templates.song(songData);
+      if (this.dom.searchInput.value.trim() === '') {
+        this.dom.searchMsg.innerHTML = 'Please type at least one letter';
+        this.dom.resultsContainer.innerHTML = '';
+      } else {
+        this.initSearch();
+        this.dom.searchMsg.innerHTML = `We have found ${this.songsSet.length} ${
+          this.songsSet.length == 1 ? 'song...' : 'songs...'
+        }`;
+        this.dom.resultsContainer.innerHTML = '';
 
-        this.element = utils.createDOMFromHTML(generatedHTML);
-
-        if (
-          songData.filename
-            .slice(0, -4)
-            .split('_')
-            .map(word => word.toLowerCase())
-            .includes(this.dom.inputSearch.value.toLowerCase())
-        ) {
-          this.songsArr.push(songData.filename);
+        for (let song of this.songsSet) {
+          const generatedHTML = templates.song(song);
+          this.element = utils.createDOMFromHTML(generatedHTML);
           this.dom.resultsContainer.appendChild(this.element);
         }
       }
-      this.dom.searchMsg.innerHTML = `We have found ${this.songsArr.length} songs...`;
-
       app.initPlayer(select.containerOf.searchResult);
-      this.dom.inputSearch.value = '';
     });
   }
-  // resetSearch() {
-  //   document.querySelector('.navigation').addEventListener('click', function (event) {
-  //     if (event.target.getAttribute('href') && document.querySelector('#searchLink').classList.contains('clicked')) {
-  //     }
-  //   });
-  // }
 }
 
 export default Search;
