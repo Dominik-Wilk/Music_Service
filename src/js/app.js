@@ -8,30 +8,8 @@ const app = {
   init: function () {
     this.initPages();
     this.initData();
-    this.getElement();
     this.initDiscover();
     this.initSearch();
-  },
-
-  getElement: function () {
-    this.wrapper = document.querySelectorAll('.wrapper');
-  },
-
-  resetWrapper: function () {
-    document.querySelector('.navigation').addEventListener('click', e => {
-      if (e.target.getAttribute('href')) {
-        for (let item of this.wrapper) {
-          item.innerHTML = '';
-        }
-        document.querySelector('#searchMsg').innerHTML = '';
-        // if (e.target.getAttribute('href') === '#discover') {
-        //   Discover.initDiscover();
-        // }
-        if (e.target.getAttribute('href') === '#home') {
-          this.initHome();
-        }
-      }
-    });
   },
 
   initPages: function () {
@@ -59,25 +37,38 @@ const app = {
         window.location.hash = `#/${id}`;
       });
     }
-    this.resetWrapper();
+    // this.resetWrapper();
   },
   initData: function () {
     this.data = {};
 
     const url = settings.db.url + '/' + settings.db.songs;
-    fetch(url)
-      .then(function (rawResponse) {
-        return rawResponse.json();
+    const urlAuthors = settings.db.url + '/' + settings.db.authors;
+
+    Promise.all([fetch(url), fetch(urlAuthors)])
+      .then(function (allResponse) {
+        const songsResponse = allResponse[0];
+        const authorsResponse = allResponse[1];
+        return Promise.all([songsResponse.json(), authorsResponse.json()]);
       })
-      .then(parsedResponse => {
-        this.data.songs = parsedResponse;
+      .then(([songs, authors]) => {
+        this.data.songs = songs;
+        this.data.authors = authors;
         this.initHome();
       });
+    // fetch(url)
+    //   .then(function (rawResponse) {
+    //     return rawResponse.json();
+    //   })
+    //   .then(parsedResponse => {
+    //     this.data.songs = parsedResponse;
+    //     this.initHome();
+    //   });
   },
 
   initHome: function () {
     for (let songData in this.data.songs) {
-      new Home(this.data.songs[songData].id, this.data.songs[songData]);
+      new Home(this.data.authors[songData], this.data.songs[songData]);
     }
 
     this.initPlayer(select.containerOf.songs);
