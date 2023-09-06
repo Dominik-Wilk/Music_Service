@@ -1,6 +1,35 @@
 .home__songs {
   margin-top: 113px;
 }
+.home__categories {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 20px;
+
+  span {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  #categories {
+    display: inline-block;
+    font-size: 25px;
+
+    a {
+      display: inline-block;
+      cursor: pointer;
+      padding: 0 15px;
+
+      &:not(:last-child) {
+        border-right: 2px solid white;
+      }
+      &.active {
+        color: $second-color;
+        font-weight: bold;
+      }
+    }
+  }
+}
 
 .subscribe {
   position: relative;
