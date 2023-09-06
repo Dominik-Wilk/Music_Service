@@ -1,5 +1,6 @@
-import { select, classNames, settings } from './settings.js';
+import { select, classNames, settings, templates } from './settings.js';
 import Home from './components/Home.js';
+import utils from './utils.js';
 import GreenAudioPlayer from '../vendor/green-audio-player.js';
 import Discover from './components/Discover.js';
 import Search from './components/Search.js';
@@ -37,7 +38,6 @@ const app = {
         window.location.hash = `#/${id}`;
       });
     }
-    // this.resetWrapper();
   },
   initData: function () {
     this.data = {};
@@ -56,21 +56,70 @@ const app = {
         this.data.authors = authors;
         this.initHome();
       });
-    // fetch(url)
-    //   .then(function (rawResponse) {
-    //     return rawResponse.json();
-    //   })
-    //   .then(parsedResponse => {
-    //     this.data.songs = parsedResponse;
-    //     this.initHome();
-    //   });
+  },
+  renderCategory() {
+    let category = [];
+    this.container = document.querySelector(select.containerOf.categories);
+
+    this.data.songs.forEach(song => {
+      category = category.concat(song.categories);
+    });
+
+    this.categories = new Set(category);
+
+    this.categories.forEach(item => {
+      this.container.innerHTML += `<a class='category'>${item}</a> `;
+    });
+
+    this.listenCategory();
+  },
+
+  listenCategory() {
+    this.categoryLinks = document.querySelector(select.containerOf.categories);
+    this.categoryWrapp = this.categoryLinks.children;
+    for (let category of this.categoryWrapp) {
+      category.addEventListener('click', e => {
+        e.preventDefault();
+        const songContainer = document.querySelector(select.containerOf.songs);
+        const activeCategories = document.querySelectorAll(select.all.categoryActive);
+        songContainer.innerHTML = '';
+
+        for (let activeCategory of activeCategories) {
+          if (activeCategory !== e.currentTarget) {
+            activeCategory.classList.remove('active');
+          }
+        }
+        e.currentTarget.classList.toggle('active');
+        songContainer.innerHTML = '';
+        this.data.songs.forEach(song => {
+          const generatedHTML = templates.song(song);
+          this.element = utils.createDOMFromHTML(generatedHTML);
+
+          if (song.categories.includes(e.currentTarget.innerHTML)) {
+            songContainer.appendChild(this.element);
+          }
+        });
+        this.initPlayer(select.containerOf.songs);
+
+        if (this.categoryLinks.querySelector('.active') === null) {
+          songContainer.innerHTML = '';
+          this.data.songs.forEach(song => {
+            const generatedHTML = templates.song(song);
+            this.element = utils.createDOMFromHTML(generatedHTML);
+            songContainer.appendChild(this.element);
+          });
+          this.initPlayer(select.containerOf.songs);
+        }
+      });
+    }
   },
 
   initHome: function () {
     for (let songData in this.data.songs) {
-      new Home(this.data.authors[songData], this.data.songs[songData]);
+      new Home(this.data.authors[songData], this.data.songs[songData], this.data.songs);
     }
 
+    this.renderCategory();
     this.initPlayer(select.containerOf.songs);
   },
 

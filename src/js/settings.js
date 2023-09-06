@@ -8,6 +8,7 @@ export const select = {
     discoverResult: '#discoverResult',
     home: '.home-wrapper',
     pages: '#pages',
+    categories: '.home__categories #categories',
   },
   searchForm: {
     button: '.search__btn',
@@ -16,6 +17,9 @@ export const select = {
   },
   links: {
     links: ' a',
+  },
+  all: {
+    categoryActive: '.home__categories #categories a.active',
   },
 };
 export const classNames = {
