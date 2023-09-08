@@ -59,7 +59,7 @@ const app = {
   },
   renderCategory() {
     let category = [];
-    this.container = document.querySelector(select.containerOf.categories);
+    this.catsContainer = document.querySelector(select.containerOf.categories);
 
     this.data.songs.forEach(song => {
       category = category.concat(song.categories);
@@ -68,7 +68,7 @@ const app = {
     this.categories = new Set(category);
 
     this.categories.forEach(item => {
-      this.container.innerHTML += `<a class='category'>${item}</a> `;
+      this.catsContainer.innerHTML += `<a class='category'>${item}</a> `;
     });
 
     this.listenCategory();
@@ -77,6 +77,8 @@ const app = {
   listenCategory() {
     this.categoryLinks = document.querySelector(select.containerOf.categories);
     this.categoryWrapp = this.categoryLinks.children;
+    console.log(this.categoryWrapp);
+
     for (let category of this.categoryWrapp) {
       category.addEventListener('click', e => {
         e.preventDefault();
@@ -103,12 +105,9 @@ const app = {
 
         if (this.categoryLinks.querySelector('.active') === null) {
           songContainer.innerHTML = '';
-          this.data.songs.forEach(song => {
-            const generatedHTML = templates.song(song);
-            this.element = utils.createDOMFromHTML(generatedHTML);
-            songContainer.appendChild(this.element);
-          });
-          this.initPlayer(select.containerOf.songs);
+          this.catsContainer.innerHTML = '';
+
+          this.initHome();
         }
       });
     }
