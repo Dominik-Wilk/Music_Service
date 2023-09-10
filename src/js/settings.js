@@ -14,6 +14,7 @@ export const select = {
     button: '.search__btn',
     input: '.search__input',
     message: '.search__message',
+    select: '.search__select',
   },
   links: {
     links: ' a',

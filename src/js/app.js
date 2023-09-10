@@ -54,6 +54,8 @@ const app = {
         this.data.songs = songs;
         this.data.authors = authors;
         this.initHome();
+        this.initDiscover();
+        this.initSearch();
       });
   },
 
@@ -64,8 +66,9 @@ const app = {
     this.catsContainer = document.querySelector(select.containerOf.categories);
     this.categoryLinks = document.querySelector(select.containerOf.categories);
     this.categoryWrapp = this.categoryLinks.children;
-  },
 
+    this.searchSelect = document.querySelector(select.searchForm.select);
+  },
   renderCategory() {
     let category = [];
 
@@ -75,12 +78,14 @@ const app = {
 
     this.categories = new Set(category);
     let html = '';
-
+    let optionValue = '<option value="" selected></option>';
     this.categories.forEach(item => {
       html += `<a class='category'>${item}</a> `;
+      optionValue += `<option value="${item}">${item}</option> `;
     });
 
     this.catsContainer.innerHTML = html;
+    this.searchSelect.innerHTML = optionValue;
 
     this.listenCategory();
   },

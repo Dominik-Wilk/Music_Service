@@ -16,7 +16,7 @@ class Search {
     this.dom.searchBtn = searchForm.querySelector(select.searchForm.button);
     this.dom.searchInput = searchForm.querySelector(select.searchForm.input);
     this.dom.searchMsg = searchForm.querySelector(select.searchForm.message);
-
+    this.dom.searchSelect = searchForm.querySelector(select.searchForm.select);
     this.dom.resultsContainer = searchForm.querySelector(select.containerOf.searchResult);
   }
 
@@ -35,22 +35,37 @@ class Search {
   initAction() {
     this.dom.searchBtn.addEventListener('click', event => {
       event.preventDefault();
+      this.dom.resultsContainer.innerHTML = '';
 
-      if (this.dom.searchInput.value.trim() === '') {
-        this.dom.searchMsg.innerHTML = 'Please type at least one letter';
-        this.dom.resultsContainer.innerHTML = '';
+      if (this.dom.searchSelect.value === '') {
+        if (this.dom.searchInput.value.trim() === '') {
+          this.dom.searchMsg.innerHTML = 'Please type at least one letter';
+          this.dom.resultsContainer.innerHTML = '';
+        } else {
+          this.initSearch();
+          this.dom.searchMsg.innerHTML = `We have found ${this.songsSet.length} ${
+            this.songsSet.length == 1 ? 'song...' : 'songs...'
+          }`;
+          this.dom.resultsContainer.innerHTML = '';
+
+          for (let song of this.songsSet) {
+            const generatedHTML = templates.song(song);
+            this.element = utils.createDOMFromHTML(generatedHTML);
+            this.dom.resultsContainer.appendChild(this.element);
+          }
+        }
       } else {
-        this.initSearch();
-        this.dom.searchMsg.innerHTML = `We have found ${this.songsSet.length} ${
-          this.songsSet.length == 1 ? 'song...' : 'songs...'
-        }`;
-        this.dom.resultsContainer.innerHTML = '';
-
-        for (let song of this.songsSet) {
+        this.data.songs.forEach(song => {
           const generatedHTML = templates.song(song);
           this.element = utils.createDOMFromHTML(generatedHTML);
-          this.dom.resultsContainer.appendChild(this.element);
-        }
+
+          if (song.categories.includes(this.dom.searchSelect.value)) {
+            this.dom.resultsContainer.appendChild(this.element);
+          }
+        });
+        this.dom.searchMsg.innerHTML = `We have found ${this.dom.resultsContainer.childElementCount} ${
+          this.dom.resultsContainer.childElementCount === 1 ? 'song...' : 'songs...'
+        }`;
       }
       app.initPlayer(select.containerOf.searchResult);
     });
