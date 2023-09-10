@@ -375,7 +375,8 @@
       label {
         text-transform: uppercase;
       }
-      .search__input {
+      .search__input,
+      .search__select {
         margin: 15px 0;
         height: 40px;
         font-size: 20px;
@@ -571,15 +572,16 @@
       label {
         text-transform: uppercase;
       }
-      .search__input {
+      .search__input,
+      .search__select {
         width: 100%;
         margin: 15px 0;
         height: 40px;
         font-size: 20px;
       }
       .search__btn {
-        height: 40px;
-        width: 100px;
+        height: 48px;
+        width: 140px;
         font-size: 16px;
         margin-top: 20px;
         margin-bottom: 40px;
