@@ -7,6 +7,7 @@ import Search from './components/Search.js';
 
 const app = {
   init: function () {
+    this.getElement();
     this.initPages();
     this.initData();
     this.initDiscover();
@@ -14,8 +15,6 @@ const app = {
   },
 
   initPages: function () {
-    this.pages = document.querySelector(select.containerOf.pages).children;
-    this.links = document.querySelectorAll(select.links.links);
     const idFromHash = window.location.hash.replace('#', '');
     let pageMatchingHash = this.pages[0].id;
     for (let page of this.pages) {
@@ -57,28 +56,36 @@ const app = {
         this.initHome();
       });
   },
+
+  getElement() {
+    this.pages = document.querySelector(select.containerOf.pages).children;
+    this.links = document.querySelectorAll(select.links.links);
+
+    this.catsContainer = document.querySelector(select.containerOf.categories);
+    this.categoryLinks = document.querySelector(select.containerOf.categories);
+    this.categoryWrapp = this.categoryLinks.children;
+  },
+
   renderCategory() {
     let category = [];
-    this.catsContainer = document.querySelector(select.containerOf.categories);
 
     this.data.songs.forEach(song => {
       category = category.concat(song.categories);
     });
 
     this.categories = new Set(category);
+    let html = '';
 
     this.categories.forEach(item => {
-      this.catsContainer.innerHTML += `<a class='category'>${item}</a> `;
+      html += `<a class='category'>${item}</a> `;
     });
+
+    this.catsContainer.innerHTML = html;
 
     this.listenCategory();
   },
 
   listenCategory() {
-    this.categoryLinks = document.querySelector(select.containerOf.categories);
-    this.categoryWrapp = this.categoryLinks.children;
-    console.log(this.categoryWrapp);
-
     for (let category of this.categoryWrapp) {
       category.addEventListener('click', e => {
         e.preventDefault();
